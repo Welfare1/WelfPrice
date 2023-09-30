@@ -406,7 +406,7 @@ class _SelectCoinState extends State<SelectCoin> {
                                   size: myHeight * 0.02,
                                 ),
                                 const Text(
-                                  'Add to portfolio',
+                                  'Suivre',
                                   style: TextStyle(fontSize: 20),
                                 ),
                               ],

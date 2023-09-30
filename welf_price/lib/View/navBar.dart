@@ -17,8 +17,6 @@ class _NavBarState extends State<NavBar> {
   List<Widget> pages = [
     Home(),
     CryptList(),
-    AnotherPage(),
-    AnotherPage(),
   ];
 
   @override
@@ -61,30 +59,6 @@ class _NavBarState extends State<NavBar> {
                   label: '',
                   activeIcon: Image.asset(
                     'assets/icons/2.2.png',
-                    height: myHeight * 0.03,
-                    color: Colors.white,
-                  )),
-              BottomNavigationBarItem(
-                  icon: Image.asset(
-                    'assets/icons/3.1.png',
-                    height: myHeight * 0.03,
-                    color: Colors.grey,
-                  ),
-                  label: '',
-                  activeIcon: Image.asset(
-                    'assets/icons/3.2.png',
-                    height: myHeight * 0.03,
-                    color: Colors.white,
-                  )),
-              BottomNavigationBarItem(
-                  icon: Image.asset(
-                    'assets/icons/4.1.png',
-                    height: myHeight * 0.03,
-                    color: Colors.grey,
-                  ),
-                  label: '',
-                  activeIcon: Image.asset(
-                    'assets/icons/4.2.png',
                     height: myHeight * 0.03,
                     color: Colors.white,
                   )),
