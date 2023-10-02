@@ -50,6 +50,7 @@ class _CryptListState extends State<CryptList> {
                             Flexible(
                               flex: 3,
                               child: TextField(
+                                style: const TextStyle(color: Colors.teal),
                                 decoration: InputDecoration(
                                   prefixIcon: Icon(
                                     Icons.search,
@@ -73,6 +74,7 @@ class _CryptListState extends State<CryptList> {
                                   fillColor: Colors.grey.shade200,
                                   filled: true,
                                 ),
+                                onChanged: (value) => searchCrypt(value),
                               ),
                             ),
                             Flexible(
@@ -80,13 +82,13 @@ class _CryptListState extends State<CryptList> {
                                 child: Row(
                                   children: [
                                     IconButton(
-                                        onPressed: () {},
+                                        onPressed: () => sortListAsc(),
                                         icon: const Icon(
                                           Icons.arrow_upward,
                                           color: Colors.white,
                                         )),
                                     IconButton(
-                                        onPressed: () {},
+                                        onPressed: () => sortListDesc(),
                                         icon: const Icon(
                                           Icons.arrow_downward,
                                           color: Colors.white,
@@ -99,10 +101,10 @@ class _CryptListState extends State<CryptList> {
                       Expanded(
                         child: ListView.builder(
                           scrollDirection: Axis.vertical,
-                          itemCount: coinMarket!.length,
+                          itemCount: coinMarketFound.length,
                           itemBuilder: (context, index) {
                             return Item3(
-                              item: coinMarket![index],
+                              item: coinMarketFound[index],
                             );
                           },
                         ),
@@ -115,7 +117,8 @@ class _CryptListState extends State<CryptList> {
 
   bool isRefreshing = true;
 
-  List? coinMarket = [];
+  List<CoinModel> coinMarket = [];
+  List<CoinModel> coinMarketFound = [];
   var coinMarketList;
   Future<List<CoinModel>?> getCoinMarket() async {
     const url =
@@ -133,12 +136,43 @@ class _CryptListState extends State<CryptList> {
     });
     if (response.statusCode == 200) {
       var x = response.body;
-      coinMarketList = coinModelFromJson(x);
+
       setState(() {
-        coinMarket = coinMarketList;
+        coinMarketList = coinModelFromJson(x);
+        coinMarket = coinModelFromJson(x);
+        // coinMarket = coinMarketList;
       });
     } else {
       print(response.statusCode);
     }
+  }
+
+  searchCrypt(String keyWord) {
+    List<CoinModel> result = coinMarket;
+    if (keyWord.isEmpty) {
+      result = coinMarket;
+    } else {
+      result = coinMarket
+          .where((element) =>
+              element.id.toLowerCase().contains(keyWord.toLowerCase()))
+          .toList();
+    }
+    setState(() {
+      coinMarketFound = result;
+    });
+  }
+
+  sortListAsc() {
+    setState(() {
+      coinMarketFound
+          .sort((a, b) => b.priceChange24H.compareTo(a.priceChange24H));
+    });
+  }
+
+  sortListDesc() {
+    setState(() {
+      coinMarketFound
+          .sort((a, b) => a.priceChange24H.compareTo(b.priceChange24H));
+    });
   }
 }

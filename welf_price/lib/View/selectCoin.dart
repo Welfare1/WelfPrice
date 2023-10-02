@@ -168,7 +168,7 @@ class _SelectCoinState extends State<SelectCoin> {
                       children: [
                         Column(
                           children: [
-                            Text(
+                            const Text(
                               'Low',
                               style: TextStyle(
                                   fontSize: 20,
@@ -200,7 +200,7 @@ class _SelectCoinState extends State<SelectCoin> {
                               height: myHeight * 0.01,
                             ),
                             Text(
-                              '\$' + widget.selectItem.high24H.toString(),
+                              '\$${widget.selectItem.high24H.toString()}',
                               style: const TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.normal,
@@ -250,7 +250,7 @@ class _SelectCoinState extends State<SelectCoin> {
                                 padding: EdgeInsets.all(myHeight * 0.06),
                                 child: const Center(
                                   child: Text(
-                                    'Attention this Api is free, so you cannot send multiple requests per second, please wait and try again later.',
+                                    'Veuillez réessayer dans quelques instants',
                                     style: TextStyle(fontSize: 18),
                                   ),
                                 ),
@@ -318,12 +318,12 @@ class _SelectCoinState extends State<SelectCoin> {
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(5),
                                   color: textBool[index] == true
-                                      ? Color(0xffFBC700).withOpacity(0.3)
+                                      ? const Color(0xffFBC700).withOpacity(0.3)
                                       : Colors.transparent,
                                 ),
                                 child: Text(
                                   text[index],
-                                  style: TextStyle(fontSize: 18),
+                                  style: const TextStyle(fontSize: 18),
                                 ),
                               ),
                             ),
@@ -332,47 +332,6 @@ class _SelectCoinState extends State<SelectCoin> {
                       ),
                     ),
                   ),
-                  // SizedBox(
-                  //   height: myHeight * 0.04,
-                  // ),
-                  // Expanded(
-                  //     child: ListView(
-                  //   children: [
-                  //     Padding(
-                  //       padding: EdgeInsets.symmetric(horizontal: myWidth * 0.06),
-                  //       child: const Text(
-                  //         'News',
-                  //         style: TextStyle(fontSize: 25),
-                  //       ),
-                  //     ),
-                  //     Padding(
-                  //       padding: EdgeInsets.symmetric(
-                  //           horizontal: myWidth * 0.06,
-                  //           vertical: myHeight * 0.01),
-                  //       child: Row(
-                  //         crossAxisAlignment: CrossAxisAlignment.start,
-                  //         children: [
-                  //           const Expanded(
-                  //             child: Text(
-                  //               'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-                  //               textAlign: TextAlign.justify,
-                  //               style:
-                  //                   TextStyle(color: Colors.grey, fontSize: 17),
-                  //             ),
-                  //           ),
-                  //           Container(
-                  //             width: myWidth * 0.25,
-                  //             child: CircleAvatar(
-                  //               radius: myHeight * 0.04,
-                  //               backgroundImage:
-                  //                   const AssetImage('assets/image/11.PNG'),
-                  //             ),
-                  //           )
-                  //         ],
-                  //       ),
-                  //     )
-                  //   ],
-                  // ))
                 ],
               )),
               Container(
